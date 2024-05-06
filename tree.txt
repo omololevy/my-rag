@@ -1,11 +1,23 @@
 .
+├── appp.py
 ├── app.py
+├── Nairobi.pdf
+├── pdf_analyzer.py
 ├── __pycache__
+│   ├── pdf_analyzer.cpython-310.pyc
 │   └── rag.cpython-310.pyc
 ├── pyproject.toml
 ├── rag.py
 ├── README.md
 ├── requirements.txt
 ├── run.sh
+├── tests
+│   ├── integration_test.py
+│   ├── performance_test.py
+│   ├── __pycache__
+│   │   └── unittest.cpython-310.pyc
+│   ├── security_test.py
+│   ├── system_test.py
+│   └── unittest.py
 ├── tree.txt
 └── venv
