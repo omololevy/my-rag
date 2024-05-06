@@ -1,0 +1,11 @@
+.
+├── app.py
+├── __pycache__
+│   └── rag.cpython-310.pyc
+├── pyproject.toml
+├── rag.py
+├── README.md
+├── requirements.txt
+├── run.sh
+├── tree.txt
+└── venv
