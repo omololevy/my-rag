@@ -3,7 +3,7 @@ import os
 import tempfile
 import streamlit as st
 from streamlit_chat import message
-from rag.rag import AnalyseIt
+from rag import AnalyseIt
 
 st.set_page_config(page_title="Analyse It")
 
