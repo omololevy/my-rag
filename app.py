@@ -3,13 +3,13 @@ import os
 import tempfile
 import streamlit as st
 from streamlit_chat import message
-from rag import AnalyseIt
+from rag import ChatPDF
 
-st.set_page_config(page_title="Analyse It")
+st.set_page_config(page_title="myChatPDF")
 
 
 def display_messages():
-    st.subheader("Let's Chat")
+    st.subheader("Chat")
     for i, (msg, is_user) in enumerate(st.session_state["messages"]):
         message(msg, is_user=is_user, key=str(i))
     st.session_state["thinking_spinner"] = st.empty()
@@ -18,7 +18,7 @@ def display_messages():
 def process_input():
     if st.session_state["user_input"] and len(st.session_state["user_input"].strip()) > 0:
         user_text = st.session_state["user_input"].strip()
-        with st.session_state["thinking_spinner"], st.spinner(f"Let\'s Chat is thinking"):
+        with st.session_state["thinking_spinner"], st.spinner(f"Thinking"):
             agent_text = st.session_state["assistant"].ask(user_text)
 
         st.session_state["messages"].append((user_text, True))
@@ -35,7 +35,7 @@ def read_and_save_file():
             tf.write(file.getbuffer())
             file_path = tf.name
 
-        with st.session_state["ingestion_spinner"], st.spinner(f"Loading {file.name}"):
+        with st.session_state["ingestion_spinner"], st.spinner(f"Ingesting {file.name}"):
             st.session_state["assistant"].ingest(file_path)
         os.remove(file_path)
 
@@ -43,9 +43,9 @@ def read_and_save_file():
 def page():
     if len(st.session_state) == 0:
         st.session_state["messages"] = []
-        st.session_state["assistant"] = AnalyseIt()
+        st.session_state["assistant"] = ChatPDF()
 
-    st.header("Analyse It")
+    st.header("My ChatPDF")
 
     st.subheader("Upload a document")
     st.file_uploader(
